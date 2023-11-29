@@ -2,7 +2,7 @@ import tkinter as tk
 class MyCalculator:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.geometry("600x480")
+        self.root.geometry("550x600")
         self.root.title("Calculator Pro X +++")
 
         self.label = tk.Label(self.root, text="Calculator Pro X +++", font=('Comic Sans MS', 40))
