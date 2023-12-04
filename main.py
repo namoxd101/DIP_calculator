@@ -47,6 +47,8 @@ class MyCalculator:
         self.button.place(x=285, y=540)
         self.button = tk.Button(self.root, text="=", font=('Comic Sans MS', 25), width=3, height=1)
         self.button.place(x=385, y=540)
+        self.label = tk.Label(self.root, text="", width=50, height=2).place(x=0, y=80) 
+
 
         self.root.mainloop()
 
