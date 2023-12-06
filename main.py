@@ -6,12 +6,15 @@ class MyCalculator:
         self.root.resizable(0, 0)
         self.root.title("Calculator Pro X +++")
         self.root.option_add("*Font", "ComicSansMS 25")
+        self.root.title(self.title)
+
 
         self.label = tk.Label(self.root, text="Calculator Pro X +++", font=('Comic Sans MS', 30))
         self.label.grid(row=0, column=0, columnspan=4, sticky="NEWS", padx=20, pady=(20, 10), ipadx=20, ipady=10)
-        self.label = tk.Label(self.root, text="                    ", font=('Comic Sans MS', 30),bg="yellow")
+        self.label = tk.Label(self.root, text=" ", font=('Comic Sans MS', 30),bg="yellow")
         self.label.grid(row=1, columnspan=4, padx=20, pady=(0, 10), ipadx=20, ipady=10)
         
+
         self.button = tk.Button(self.root, text="CE", width=3, height=1)
         self.button.grid(row=2, column=0)
         self.button = tk.Button(self.root, text="()", width=3, height=1)
