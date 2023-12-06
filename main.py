@@ -128,6 +128,33 @@ class MyCalculator:
         self.label_text.set("/")
         self.label.grid(row=1, column=0)
 
+    def multiply(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("x")
+        self.label.grid(row=1, column=0)
+
+    def subtract(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("-")
+        self.label.grid(row=1, column=0)
+
+    def add(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("+")
+        self.label.grid(row=1, column=0)
+
+    def seven(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("7")
+        self.label.grid(row=1, column=0)
     
 
 MyCalculator()
