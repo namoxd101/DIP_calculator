@@ -8,6 +8,8 @@ class MyCalculator:
 
         self.label = tk.Label(self.root, text="Calculator Pro X +++", font=('Comic Sans MS', 40))
         self.label.pack()
+        self.label = tk.Label(self.root, text="                    ", font=('Comic Sans MS', 40),bg="yellow")
+        self.label.place(x=105,y=70)
         self.button = tk.Button(self.root, text="CE", font=('Comic Sans MS', 25), width=3, height=1)
         self.button.place(x=85, y=150)
         self.button = tk.Button(self.root, text="()", font=('Comic Sans MS', 25), width=3, height=1)
@@ -48,7 +50,7 @@ class MyCalculator:
         self.button.place(x=285, y=540)
         self.button = tk.Button(self.root, text="=", font=('Comic Sans MS', 25), width=3, height=1)
         self.button.place(x=385, y=540)
-        self.label = tk.Label(self.root, text="", width=50, height=2).place(x=0, y=80) 
+      
 
 
         self.root.mainloop()
