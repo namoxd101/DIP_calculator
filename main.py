@@ -100,6 +100,8 @@ class MyCalculator:
       
 
         self.root.mainloop()
+
+        
     def CE(self, event):
         print(event)
         self.title = "My Calculator"
@@ -211,6 +213,33 @@ class MyCalculator:
         self.root.title(self.title)
         self.label_text.set("3")
         self.label.grid(row=1, column=0)
+    
+    def posinega(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("+/-")
+        self.label.grid(row=1, column=0)
 
+    def zero(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("0")
+        self.label.grid(row=1, column=0)
+
+    def dot(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set(".")
+        self.label.grid(row=1, column=0)
+
+    def equal(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("=")
+        self.label.grid(row=1, column=0)
 
 MyCalculator()
