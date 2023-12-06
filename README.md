@@ -26,9 +26,4 @@
 ## Disclaimer
 for educational purpose only. Run on your own risk.
 
-4. b4 change detail use
-
-                            git config --global user.name "My Name"
-
-                            git config --global user.email "myemail@example.com"
-at terminal
+4
