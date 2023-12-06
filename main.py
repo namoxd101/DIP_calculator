@@ -100,7 +100,33 @@ class MyCalculator:
       
 
         self.root.mainloop()
+    def CE(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("")
+        self.label.grid(row=1, column=0)
 
+    def Paren(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("()")
+        self.label.grid(row=1, column=0)
+
+    def Perc(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("%")
+        self.label.grid(row=1, column=0)
+
+    def divide(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("/")
+        self.label.grid(row=1, column=0)
 
     
 
