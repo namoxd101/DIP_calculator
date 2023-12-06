@@ -5,8 +5,8 @@
 เครื่องคิดเลข
 
 ## Installation
-1. install python
-2. execute python main.py
+1. Install python
+2. Execute python main.py
 
 ## Note
 ### 2023-11-29
