@@ -183,4 +183,34 @@ class MyCalculator:
         self.root.title(self.title)
         self.label_text.set("5")
         self.label.grid(row=1, column=0)
+
+    def six(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("6")
+        self.label.grid(row=1, column=0)
+
+    def one(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("1")
+        self.label.grid(row=1, column=0)
+
+    def two(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("2")
+        self.label.grid(row=1, column=0)
+
+    def three(self, event):
+        print(event)
+        self.title = "My Calculator"
+        self.root.title(self.title)
+        self.label_text.set("3")
+        self.label.grid(row=1, column=0)
+
+
 MyCalculator()
