@@ -1,245 +1,133 @@
-import tkinter as tk
-class MyCalculator:
-    
-    title="Calculator Pro X +++"
-    
-    def __init__(self):
+from tkinter import *
 
-        self.root = tk.Tk()
-        self.root.geometry("478x650")
-        #self.root.resizable(0, 0)
-        self.root.option_add("*Font", "ComicSansMS 25")
-        self.root.title(self.title)
+'''
+Functions
+'''
+# Function to add in the entry of text display
+def button_click(char):
+    global calc_operator
+    calc_operator += str(char)
+    text_input.set(calc_operator)
 
-        self.label_text =tk.StringVar()
-        self.label = tk.Label(self.root, text="Calculator Pro X +++", font=('Comic Sans MS', 30))
-        self.label.grid(row=0, column=0, columnspan=4, sticky="NEWS", padx=20, pady=(20, 10), ipadx=20, ipady=10)
-        self.label = tk.Label(self.root, textvariable=self.label_text, font=('Comic Sans MS', 30),bg="yellow")
-        self.label.grid(row=1, columnspan=4, padx=20, pady=(0, 10), ipadx=20, ipady=10)
-        
-    
-        self.buttonCE = tk.Button(self.root, text="CE", width=3, height=1, padx=25, pady=10)
-        self.buttonCE.grid(row=2, column=0)
-        self.buttonCE.bind("<Button-1>", self.CE)
+# Function to clear the whole entry of text display
+def button_clear_all():
+    global calc_operator
+    calc_operator = ""
+    text_input.set("")
 
-        self.buttonParen = tk.Button(self.root, text="()", width=3, height=1, padx=25, pady=10)
-        self.buttonParen.grid(row=2, column=1)
-        self.buttonParen.bind("<Button-1>", self.Paren)
-        
-        self.buttonPerc = tk.Button(self.root, text="%", width=3, height=1, padx=25, pady=10)
-        self.buttonPerc.grid(row=2, column=2)
-        self.buttonPerc.bind("<Button-1>", self.Perc)
+# Function to delete one by one from the last in the entry of text display
+def button_delete():
+    global calc_operator
+    text = calc_operator[:-1]
+    calc_operator = text
+    text_input.set(text)
 
-        self.buttondivide = tk.Button(self.root, text="/", width=3, height=1, padx=25, pady=10)
-        self.buttondivide.grid(row=2, column=3)
-        self.buttondivide.bind("<Button-1>", self.divide)
+# Function to change the sign of number
+def sign_change():
+    global calc_operator
+    if calc_operator[0]=='-':
+        temp = calc_operator[1:]
+    else:
+        temp = '-'+calc_operator
+    calc_operator = temp
+    text_input.set(temp)    
 
-        self.buttonmultiply = tk.Button(self.root, text="x", width=3, height=1, padx=25, pady=10)
-        self.buttonmultiply.grid(row=3, column=3)
-        self.buttonmultiply.bind("<Button-1>", self.multiply)
-        
-        self.buttonsubtract = tk.Button(self.root, text="-", width=3, height=1, padx=25, pady=10)
-        self.buttonsubtract.grid(row=4, column=3)
-        self.buttonsubtract.bind("<Button-1>", self.subtract)
+# Function to calculate the percentage of a number
+def percent():
+    global calc_operator
+    temp = str(eval(calc_operator+'/100'))
+    calc_operator = temp
+    text_input.set(temp)
 
-        self.buttonadd = tk.Button(self.root, text="+", width=3, height=1, padx=25, pady=10)
-        self.buttonadd.grid(row=5, column=3)
-        self.buttonadd.bind("<Button-1>", self.add)
+# Funtion to find the result of an operation
+def button_equal():
+    global calc_operator
+    temp_op = str(eval(calc_operator))
+    text_input.set(temp_op)
+    calc_operator = temp_op
 
-        self.button7 = tk.Button(self.root, text="7", width=3, height=1, padx=25, pady=10)
-        self.button7.grid(row=3, column=0)
-        self.button7.bind("<Button-1>", self.seven)
 
-        self.button8 = tk.Button(self.root, text="8", width=3, height=1, padx=25, pady=10)
-        self.button8.grid(row=3, column=1)
-        self.button8.bind("<Button-1>", self.eight)
-        
-        self.button9 = tk.Button(self.root, text="9", width=3, height=1, padx=25, pady=10)
-        self.button9.grid(row=3, column=2)
-        self.button9.bind("<Button-1>", self.nine)
 
-        self.button4 = tk.Button(self.root, text="4", width=3, height=1, padx=25, pady=10)
-        self.button4.grid(row=4, column=0)
-        self.button4.bind("<Button-1>", self.four)
+root = Tk()
+root.configure(bg="#293C4A", bd=10)
+root.title("Nerd Calculator")
 
-        self.button5 = tk.Button(self.root, text="5", width=3, height=1, padx=25, pady=10)
-        self.button5.grid(row=4, column=1)
-        self.button5.bind("<Button-1>", self.five)
+calc_operator = ""
+text_input = StringVar()
 
-        self.button6 = tk.Button(self.root, text="6", width=3, height=1, padx=25, pady=10)
-        self.button6.grid(row=4, column=2)
-        self.button6.bind("<Button-1>", self.six)
+text_display = Entry(root, font=('sans-serif', 20, 'bold'), textvariable=text_input,
+                     bd=5, insertwidth = 5, bg='#BBB', justify='right').grid(columnspan=5, padx = 10, pady = 15)
 
-        self.button1 = tk.Button(self.root, text="1", width=3, height=1, padx=25, pady=10)
-        self.button1.grid(row=5, column=0)
-        self.button1.bind("<Button-1>", self.one)
+button_params = {'bd':5, 'fg':'#BBB', 'bg':'#3C3636', 'font':('sans-serif', 20, 'bold')}
+button_params_main = {'bd':5, 'fg':'#000', 'bg':'#BBB', 'font':('sans-serif', 20, 'bold')}
 
-        self.button2 = tk.Button(self.root, text="2", width=3, height=1, padx=25, pady=10)
-        self.button2.grid(row=5, column=1)
-        self.button2.bind("<Button-1>", self.two)
+'''
+Buttons
+'''
 
-        self.button3 = tk.Button(self.root, text="3", width=3, height=1, padx=25, pady=10)
-        self.button3.grid(row=5, column=2)
-        self.button3.bind("<Button-1>", self.three)
 
-        self.buttonposinega = tk.Button(self.root, text="+/-", width=3, height=1, padx=25, pady=10)
-        self.buttonposinega.grid(row=6, column=0)
-        self.buttonposinega.bind("<Button-1>", self.posinega)
+#--1st row--
+# Add a left parentheses
+left_par = Button(root, button_params, text='(',
+                  command=lambda:button_click('(')).grid(row=5, column=0, sticky="nsew")
+# Add a right parentheses
+right_par = Button(root, button_params, text=')',
+                   command=lambda:button_click(')')).grid(row=5, column=1, sticky="nsew")   
+# Change the sign of a number
+signs = Button(root, button_params, text='\u00B1',
+               command=sign_change).grid(row=5, column=2, sticky="nsew")
+# Transform number to percentage
+percentage = Button(root, button_params, text='%',
+               command=percent).grid(row=5, column=3, sticky="nsew")
+# Calculate the function e^x
+ex = Button(root, button_params, text='e^x',
+               command=lambda:button_click('e(')).grid(row=5, column=4, sticky="nsew")
 
-        self.button0 = tk.Button(self.root, text="0", width=3, height=1, padx=25, pady=10)
-        self.button0.grid(row=6, column=1)
-        self.button0.bind("<Button-1>", self.zero)
+#--2nd row--
+button_7 = Button(root, button_params_main, text='7',
+                  command=lambda:button_click('7')).grid(row=6, column=0, sticky="nsew")
+button_8 = Button(root, button_params_main, text='8',
+                  command=lambda:button_click('8')).grid(row=6, column=1, sticky="nsew")
+button_9 = Button(root, button_params_main, text='9',
+                  command=lambda:button_click('9')).grid(row=6, column=2, sticky="nsew")
+delete_one = Button(root, bd=5, fg='#000', font=('sans-serif', 20, 'bold'),
+              text='DEL', command=button_delete, bg='#db701f').grid(row=6, column=3, sticky="nsew")
+delete_all = Button(root, bd=5, fg='#000', font=('sans-serif', 20, 'bold'),
+              text='AC', command=button_clear_all, bg='#db701f').grid(row=6, column=4, sticky="nsew")
 
-        self.buttondot = tk.Button(self.root, text=".", width=3, height=1, padx=25, pady=10)
-        self.buttondot.grid(row=6, column=2)
-        self.buttondot.bind("<Button-1>", self.dot)
+#--3rd row--
+button_4 = Button(root, button_params_main, text='4',
+                  command=lambda:button_click('4')).grid(row=7, column=0, sticky="nsew")
+button_5 = Button(root, button_params_main, text='5',
+                  command=lambda:button_click('5')).grid(row=7, column=1, sticky="nsew")
+button_6 = Button(root, button_params_main, text='6',
+                  command=lambda:button_click('6')).grid(row=7, column=2, sticky="nsew")
+mul = Button(root, button_params_main, text='*',
+             command=lambda:button_click('*')).grid(row=7, column=3, sticky="nsew")
+div = Button(root, button_params_main, text='/',
+             command=lambda:button_click('/')).grid(row=7, column=4, sticky="nsew")
 
-        self.buttonequal = tk.Button(self.root, text="=", width=3, height=1, padx=25, pady=10)
-        self.buttonequal.grid(row=6, column=3)
-        self.buttonequal.bind("<Button-1>", self.equal)
-      
+#--4th row--
+button_1 = Button(root, button_params_main, text='1',
+                  command=lambda:button_click('1')).grid(row=8, column=0, sticky="nsew")
+button_2 = Button(root, button_params_main, text='2',
+                  command=lambda:button_click('2')).grid(row=8, column=1, sticky="nsew")
+button_3 = Button(root, button_params_main, text='3',
+                  command=lambda:button_click('3')).grid(row=8, column=2, sticky="nsew")
+add = Button(root, button_params_main, text='+',
+             command=lambda:button_click('+')).grid(row=8, column=3, sticky="nsew")
+sub = Button(root, button_params_main, text='-',
+             command=lambda:button_click('-')).grid(row=8, column=4, sticky="nsew")
 
-        self.root.mainloop()
+#--5th row--
+button_0 = Button(root, button_params_main, text='0',
+                  command=lambda:button_click('0')).grid(row=9, column=0, sticky="nsew")
+point = Button(root, button_params_main, text='.',
+               command=lambda:button_click('.')).grid(row=9, column=1, sticky="nsew")
+exp = Button(root, button_params_main, text='EXP', font=('sans-serif', 16, 'bold'),
+             command=lambda:button_click(E)).grid(row=9, column=2, sticky="nsew")
+equal = Button(root, button_params_main, text='=',
+               command=button_equal).grid(row=9, columnspan=2, column=3, sticky="nsew")
 
-        
-    def CE(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("")
-        self.label.grid(row=1, column=0)
 
-    def Paren(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("()")
-        self.label.grid(row=1, column=0)
-
-    def Perc(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("%")
-        self.label.grid(row=1, column=0)
-
-    def divide(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("/")
-        self.label.grid(row=1, column=0)
-
-    def multiply(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("x")
-        self.label.grid(row=1, column=0)
-
-    def subtract(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("-")
-        self.label.grid(row=1, column=0)
-
-    def add(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("+")
-        self.label.grid(row=1, column=0)
-
-    def seven(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("7")
-        self.label.grid(row=1, column=0)
-    
-    def eight(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("8")
-        self.label.grid(row=1, column=0)
-
-    def nine(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("9")
-        self.label.grid(row=1, column=0)
-
-    def four(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("4")
-        self.label.grid(row=1, column=0)
-
-    def five(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("5")
-        self.label.grid(row=1, column=0)
-
-    def six(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("6")
-        self.label.grid(row=1, column=0)
-
-    def one(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("1")
-        self.label.grid(row=1, column=0)
-
-    def two(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("2")
-        self.label.grid(row=1, column=0)
-
-    def three(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("3")
-        self.label.grid(row=1, column=0)
-    
-    def posinega(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("+/-")
-        self.label.grid(row=1, column=0)
-
-    def zero(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("0")
-        self.label.grid(row=1, column=0)
-
-    def dot(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set(".")
-        self.label.grid(row=1, column=0)
-
-    def equal(self, event):
-        print(event)
-        self.title = "My Calculator"
-        self.root.title(self.title)
-        self.label_text.set("=")
-        self.label.grid(row=1, column=0)
-
-MyCalculator()
+root.mainloop()
