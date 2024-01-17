@@ -1,45 +1,13 @@
 from tkinter import *
 
-'''
-Functions
-'''
-
-
-# Function to clear the whole entry of text display
-def button_clear_all():
-    global calc_operator
-    calc_operator = ""
-    text_input.set("")
-
-# Function to delete one by one from the last in the entry of text display
-def button_delete():
-    global calc_operator
-    text = calc_operator[:-1]
-    calc_operator = text
-    text_input.set(text)
-
-def sign_change():
-    global calc_operator
-    if calc_operator[0]=='-':
-        temp = calc_operator[1:]
-    else:
-        temp ='-'+calc_operator
-    calc_operator = temp
-    text_input.set(temp)
-
 
 root = Tk()
 root.configure(bg="#293C4A", bd=10)
 root.title("Nerd Calculator")
 
 
-
 button_params = {'bd':5, 'fg':'#BBB', 'bg':'#3C3636', 'font':('sans-serif', 20, 'bold')}
 button_params_main = {'bd':5, 'fg':'#000', 'bg':'#BBB', 'font':('sans-serif', 20, 'bold')}
-
-'''
-Buttons
-'''
 
 
 #--1st row--
