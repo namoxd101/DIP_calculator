@@ -1,15 +1,5 @@
 from tkinter import *
 
-'''
-Functions
-'''
-# Function to add in the entry of text display
-def button_click(char):
-    global calc_operator
-    calc_operator += str(char)
-    text_input.set(calc_operator)
-
-
 root = Tk()
 root.configure(bg="#293C4A", bd=10)
 root.title("Nerd Calculator")
@@ -18,9 +8,6 @@ root.title("Nerd Calculator")
 button_params = {'bd':5, 'fg':'#BBB', 'bg':'#3C3636', 'font':('sans-serif', 20, 'bold')}
 button_params_main = {'bd':5, 'fg':'#000', 'bg':'#BBB', 'font':('sans-serif', 20, 'bold')}
 
-'''
-Buttons
-'''
 
 
 button_7 = Button(root, button_params_main, text='7',
